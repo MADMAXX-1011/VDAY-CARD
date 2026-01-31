@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: #ff69b4;
+    animation: float 8s infinite;
+    opacity: 0.6;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.letter-container {
+    background: lightpink;
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    border: 3px solid #ffb6d9;
+}
+
+.letter-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.big-heart {
+    font-size: 80px;
+    color: #ff69b4;
+    animation: heartbeat 1.5s infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10%, 30% {
+        transform: scale(1.1);
+    }
+    20%, 40% {
+        transform: scale(1.05);
+    }
+}
+
+h1 {
+    color: #d63384;
+    font-size: 36px;
+    margin-top: 20px;
+    font-weight: normal;
+}
+
+.letter-body {
+    color: #555;
+    font-size: 18px;
+    line-height: 1;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.letter-body p {
+    margin-bottom: 10px;
+}
+
+.kcr {
+    text-align: right;
+    font-style: italic;
+    color: #d63384;
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+.decorative-hearts {
+    text-align: center;
+    font-size: 40px;
+    color: #ff69b4;
+    margin: 20px 0;
+}
+
+.corner-heart {
+    position: absolute;
+    font-size: 40px;
+    color: #ffb6d9;
+    opacity: 0.5;
+}
+
+.corner-heart.top-left {
+    top: 20px;
+    left: 20px;
+}
+
+.corner-heart.top-right {
+    top: 20px;
+    right: 20px;
+}
+
+.corner-heart.bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.corner-heart.bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    height: 80px;
+}
+
+.yes-button, .no-button {
+    font-size: 16px;
+    padding: 12px 30px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.yes-button {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+}
+
+.yes-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+}
+
+.no-button {
+    background: #f0f0f0;
+    color: #666;
+    transition: all 0.1s ease;
+}
+
+.no-button:hover {
+    background: #e0e0e0;
+}
+
+.response-message {
+    display: none;
+    text-align: center;
+    font-size: 32px;
+    color: #d63384;
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.explosion-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    animation: explode 2s ease-out forwards;
+    font-size: 30px;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: confettiFall 3s linear forwards;
+    z-index: 9998;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .letter-container {
+        padding: 40px 30px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .letter-body {
+        font-size: 16px;
+    }
+
+    .button-container {
+        height: 100px;
+    }
+
+    .yes-button, .no-button {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+}
